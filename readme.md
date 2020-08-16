@@ -21,13 +21,13 @@ AMPonent is Alex Merced's newest Web Component Building Library for making reusa
 ### NPM
 
 ```
-npm i ponent
+npm i amponent
 ```
 
 in your javascript file
 
 ```
-const {AMPonent} = require("ponent")
+const {AMPonent} = require("amponent")
 ```
 
 ### ES6 Module
