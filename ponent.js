@@ -23,6 +23,12 @@ const Ponent = {
       constructor() {
         super();
 
+        //attach shadowroot and abbreviate shadowroot
+        this.attachShadow({ mode: "open" });
+        this.$s = (q) => this.shadowRoot.querySelector(q);
+        this.$sa = (q) => this.shadowRoot.querySelectorAll(q);
+        this.$id = (q) => this.shadowRoot.getElementById(q);
+
         //pulling the variables from config
         this.box = config.box ? config.box : {};
         this.props = captureProps(this);
@@ -35,10 +41,9 @@ const Ponent = {
         this.destroy = config.destroy ? config.destroy : () => {};
         this.reducer = config.reducer ? config.reducer : () => {};
         this.funcs = config.funcs ? config.funcs : {};
-
-        //first render
-        this.attachShadow({ mode: "open" });
-        this.firstBefore(this.box, this.props);
+        this.$ =
+          //first render
+          this.firstBefore(this.box, this.props);
         this.build(this.box, this.props);
         this.firstAfter(this.box, this.props);
       }
@@ -70,4 +75,25 @@ const Ponent = {
     customElements.define(name, C);
   },
   captureProps,
+  makeStyle: function (name, target, style) {
+    class S extends HTMLElement {
+      constructor() {
+        super();
+
+        //make shadowdom
+        this.attachShadow({ mode: "open" });
+
+        //the template
+        this.shadowRoot.innerHTML = `
+        <style> ::slotted(${target}){
+          ${style}
+        } </style>
+
+        <span><slot></slot><span>
+        `;
+      }
+    }
+
+    customElements.define(name, S);
+  },
 };

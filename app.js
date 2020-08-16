@@ -1,14 +1,32 @@
-Ponent.make('hello-world', {
-    render: (box, props) => `<h1>Hello WOrld</h1>`
-})
+Ponent.make("hello-world", {
+  render: (box, props) => `<h1>Hello WOrld</h1>`,
+});
 
-Ponent.make('super-cheese', {
-    render: function(box, props){
-        console.log(this)
-        return `<h1>${props.cheese}</h1> ${this.useFunc('test')}`
-    },
-    funcs: {
-        test: (box, props) => "Say Hi"
-    },
-    before
-})
+Ponent.make("super-cheese", {
+  render: function (box, props) {
+    console.log(this);
+    return `<h1>${box.hello}</h1> ${this.useFunc(
+      "test"
+    )} <button id="button">Click Me</button>`;
+  },
+  box: { hello: "Hello World" },
+  funcs: {
+    test: (box, props) => "Say Hi",
+  },
+  firstBefore: function (box, props) {
+    console.log("before first render");
+  },
+  firstAfter: function (box, props) {
+    console.log("after first render");
+  },
+  before: function (box, props) {
+    console.log("before");
+  },
+  after: function (box, props) {
+    this.$s("#button").addEventListener("click", (event) => {
+      this.stuffBox({ hello: "Goodbye World" });
+    });
+  },
+});
+
+Ponent.makeStyle('red-h1','h1','color: red;')
