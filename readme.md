@@ -1,6 +1,9 @@
 # Ponent
+
 ## Web Componenet Creation Library
+
 ### by Alex Merced
+
 ---
 
 ## About
@@ -9,12 +12,46 @@ Ponent is Alex Merced's newest Web Component Building Library for making reusabl
 
 ## Installation
 
+### CDN
+
+```
+<script src="http://www.alexmercedcoder.com/ponent.js" charset="utf-8" defer></script>
+```
+
+### NPM
+
+```
+npm i ponent
+```
+
+in your javascript file
+
+```
+const {Ponent} = require("ponent")
+```
+
+### ES6 Module
+
+index.html
+
+```
+<script type="module" src="app.js" charset="utf-8" defer></script>
+```
+
+app.js
+
+```
+import {Ponent} from "http://www.alexmercedcoder.com/ponentmod.js"
+
+```
+
 ---
+
 ## Ponent.make
 
 Ponent.make is the main function for creating web components, the function signature is.
 
-*Ponent.make(name, config)*
+_Ponent.make(name, config)_
 
 #### name
 
@@ -46,9 +83,9 @@ config is an object which can have the following properties
 
 #### Other Properties
 
-**this.$s(query)**: Equivalent to this.shadowRoot.querySelector
-**this.$sa(query)**: Equivalent to this.shadowRoot.querySelectorAll
-**this.$id(query)**: Equivalent to this.shadowRoot.getElementById
+**this.\$s(query)**: Equivalent to this.shadowRoot.querySelector
+**this.\$sa(query)**: Equivalent to this.shadowRoot.querySelectorAll
+**this.\$id(query)**: Equivalent to this.shadowRoot.getElementById
 
 #### Methods
 
@@ -76,7 +113,7 @@ This is the name of the resulting html tag which MUST be kebab case. So if you p
 
 #### target
 
-This is a string that names the target child, so if this component is meant to style an h1 element that is its child, this would be "h1". If you want to style any child then you can pass "*".
+This is a string that names the target child, so if this component is meant to style an h1 element that is its child, this would be "h1". If you want to style any child then you can pass "\*".
 
 #### style
 
@@ -85,7 +122,6 @@ This is a string of the style to be applied to the target, for example "color: r
 ## Example of declaring components in your javascript
 
 ```javascript
-
 ////////////////////////
 //<hello-world> component
 ////////////////////////
@@ -129,14 +165,12 @@ Ponent.make("super-cheese", {
 //<red-h1> component
 ////////////////////////
 
-Ponent.makeStyle('red-h1','h1','color: var(--the-color);')
-
+Ponent.makeStyle("red-h1", "h1", "color: var(--the-color);");
 ```
 
 ## Example of using Components in your HTML
 
 ```html
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -152,12 +186,8 @@ Ponent.makeStyle('red-h1','h1','color: var(--the-color);')
         --the-color: green;
       }
     </style>
-      <super-cheese cheese="gouda"></super-cheese>
-      <red-h1><h1>Hello World</h1></red-h1>
+    <super-cheese cheese="gouda"></super-cheese>
+    <red-h1><h1>Hello World</h1></red-h1>
   </body>
 </html>
-
 ```
-
-
-
