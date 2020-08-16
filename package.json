@@ -1,5 +1,5 @@
 {
-  "name": "ponent",
+  "name": "amponent",
   "version": "1.0.0",
   "description": "---",
   "main": "ponentnpm.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexMercedCoder/Ponent.git"
+    "url": "git+https://github.com/AlexMercedCoder/AMPonent.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlexMercedCoder/Ponent/issues"
+    "url": "https://github.com/AlexMercedCoder/AMPonent/issues"
   },
-  "homepage": "https://github.com/AlexMercedCoder/Ponent#readme"
+  "homepage": "https://github.com/AlexMercedCoder/AMPonent#readme"
 }

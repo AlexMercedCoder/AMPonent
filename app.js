@@ -2,7 +2,7 @@
 //<hello-world> component
 ////////////////////////
 
-Ponent.make("hello-world", {
+AMPonent.make("hello-world", {
   render: (box, props) => `<h1>Hello WOrld</h1>`,
 });
 
@@ -10,7 +10,7 @@ Ponent.make("hello-world", {
 //<super-cheese> component
 ////////////////////////
 
-Ponent.make("super-cheese", {
+AMPonent.make("super-cheese", {
   render: function (box, props) {
     console.log(this);
     return `<h1>${box.hello}</h1> ${this.useFunc(
@@ -41,4 +41,4 @@ Ponent.make("super-cheese", {
 //<red-h1> component
 ////////////////////////
 
-Ponent.makeStyle('red-h1','h1','color: var(--the-color);')
+AMPonent.makeStyle("red-h1", "h1", "color: var(--the-color);");

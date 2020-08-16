@@ -1,4 +1,4 @@
-# Ponent
+# AMPonent
 
 ## Web Componenet Creation Library
 
@@ -8,7 +8,7 @@
 
 ## About
 
-Ponent is Alex Merced's newest Web Component Building Library for making reusable reactive web components easier without a complex build process.
+AMPonent is Alex Merced's newest Web Component Building Library for making reusable reactive web components easier without a complex build process.
 
 ## Installation
 
@@ -27,7 +27,7 @@ npm i ponent
 in your javascript file
 
 ```
-const {Ponent} = require("ponent")
+const {AMPonent} = require("ponent")
 ```
 
 ### ES6 Module
@@ -41,17 +41,17 @@ index.html
 app.js
 
 ```
-import {Ponent} from "http://www.alexmercedcoder.com/ponentmod.js"
+import {AMPonent} from "http://www.alexmercedcoder.com/ponentmod.js"
 
 ```
 
 ---
 
-## Ponent.make
+## AMPonent.make
 
-Ponent.make is the main function for creating web components, the function signature is.
+AMPonent.make is the main function for creating web components, the function signature is.
 
-_Ponent.make(name, config)_
+_AMPonent.make(name, config)_
 
 #### name
 
@@ -97,13 +97,13 @@ config is an object which can have the following properties
 
 ---
 
-## Ponent.captureProps(element)
+## AMPonent.captureProps(element)
 
 Pass any DOM element into this function and it will return an object of its attributes/properties
 
 ---
 
-## Ponent.makeStyle(name, target, style)
+## AMPonent.makeStyle(name, target, style)
 
 This creates a component for styling its children, similar to React Styled Components.
 
@@ -126,7 +126,7 @@ This is a string of the style to be applied to the target, for example "color: r
 //<hello-world> component
 ////////////////////////
 
-Ponent.make("hello-world", {
+AMPonent.make("hello-world", {
   render: (box, props) => `<h1>Hello WOrld</h1>`,
 });
 
@@ -134,7 +134,7 @@ Ponent.make("hello-world", {
 //<super-cheese> component
 ////////////////////////
 
-Ponent.make("super-cheese", {
+AMPonent.make("super-cheese", {
   render: function (box, props) {
     console.log(this);
     return `<h1>${box.hello}</h1> ${this.useFunc(
@@ -165,7 +165,7 @@ Ponent.make("super-cheese", {
 //<red-h1> component
 ////////////////////////
 
-Ponent.makeStyle("red-h1", "h1", "color: var(--the-color);");
+AMPonent.makeStyle("red-h1", "h1", "color: var(--the-color);");
 ```
 
 ## Example of using Components in your HTML

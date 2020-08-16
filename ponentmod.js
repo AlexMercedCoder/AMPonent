@@ -1,4 +1,4 @@
-// Ponent => by Alex Merced
+// AMPonent => by Alex Merced
 
 //////////////
 //CaptureProps
@@ -14,7 +14,7 @@ const captureProps = (element) => {
 };
 
 ////////////////////
-// Ponent
+// AMPonent
 ///////////////////
 
 export default {

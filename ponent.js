@@ -1,4 +1,4 @@
-// Ponent => by Alex Merced
+// AMPonent => by Alex Merced
 
 //////////////
 //CaptureProps
@@ -14,10 +14,10 @@ const captureProps = (element) => {
 };
 
 ////////////////////
-// Ponent
+// AMPonent
 ///////////////////
 
-const Ponent = {
+const AMPonent = {
   make: function (name, config) {
     class C extends HTMLElement {
       constructor() {
