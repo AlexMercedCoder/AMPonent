@@ -101,3 +101,7 @@ const Ponent = {
     customElements.define(name, S);
   },
 };
+
+module.exports = {
+  Ponent
+}

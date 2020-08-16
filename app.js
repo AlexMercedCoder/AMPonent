@@ -1,6 +1,14 @@
+////////////////////////
+//<hello-world> component
+////////////////////////
+
 Ponent.make("hello-world", {
   render: (box, props) => `<h1>Hello WOrld</h1>`,
 });
+
+////////////////////////
+//<super-cheese> component
+////////////////////////
 
 Ponent.make("super-cheese", {
   render: function (box, props) {
@@ -29,4 +37,8 @@ Ponent.make("super-cheese", {
   },
 });
 
-Ponent.makeStyle('red-h1','h1','color: red;')
+////////////////////////
+//<red-h1> component
+////////////////////////
+
+Ponent.makeStyle('red-h1','h1','color: var(--the-color);')

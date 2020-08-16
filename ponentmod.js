@@ -17,7 +17,7 @@ const captureProps = (element) => {
 // Ponent
 ///////////////////
 
-const Ponent = {
+export default {
   make: function (name, config) {
     class C extends HTMLElement {
       constructor() {
