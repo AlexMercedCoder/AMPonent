@@ -68,7 +68,7 @@ export default {
       }
 
       dispatch(payload) {
-        this.stuffBox(this.reducer(box, props, payload));
+        this.stuffBox(this.reducer(this.box, this.props, payload));
       }
 
       disconnectedCallback() {

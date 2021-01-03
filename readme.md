@@ -2,7 +2,7 @@
 
 ## Web Componenet Creation Library
 
-### by Alex Merced
+### by Alex Merced of AlexMerced.com
 
 ---
 
@@ -15,9 +15,11 @@ AMPonent is Alex Merced's newest Web Component Building Library for making reusa
 ### CDN
 
 ```
-<script src="http://www.alexmercedcoder.com/ponent.js" charset="utf-8" defer></script>
+<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1609694658/libraries/ponent_fqilyy.js" charset="utf-8" defer></script>
 ```
+### Webpack Build
 
+```npx create-amponent-app projectName```
 ### NPM
 
 ```
@@ -41,7 +43,7 @@ index.html
 app.js
 
 ```
-import {AMPonent} from "http://www.alexmercedcoder.com/ponentmod.js"
+import {AMPonent} from "https://res.cloudinary.com/dithdroai/raw/upload/v1609694658/libraries/ponentmod_sx3xup.js"
 
 ```
 
