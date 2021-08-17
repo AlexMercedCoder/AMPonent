@@ -40,11 +40,10 @@ const AMPonent = {
         this.render = config.render ? config.render : () => "";
         this.destroy = config.destroy ? config.destroy : () => {};
         this.reducer = config.reducer ? config.reducer : () => {};
-        if (this.funcs){
-          for (key of Object.keys(this.funcs))
-          this[key] = this.funcs[key]
+        if (config.funcs) {
+          for (key of Object.keys(config.funcs)) this[key] = config.funcs[key];
         }
-          //first render
+        //first render
         this.firstBefore(this.box, this.props, this);
         this.build(this.box, this.props, this);
         this.firstAfter(this.box, this.props, this);
@@ -104,7 +103,7 @@ const AMPonent = {
     const entries = att.map((value) => {
       return [value.name, value.value];
     });
-  
+
     return Object.fromEntries(entries);
-  }
+  },
 };
