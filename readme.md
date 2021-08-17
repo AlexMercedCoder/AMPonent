@@ -15,7 +15,7 @@ AMPonent is Alex Merced's newest Web Component Building Library for making reusa
 ### CDN
 
 ```
-<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1609694658/libraries/ponent_fqilyy.js" charset="utf-8" defer></script>
+<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1629230917/libraries/ponent_sop0rc.js" charset="utf-8" defer></script>
 ```
 ### Webpack Build
 
@@ -43,7 +43,7 @@ index.html
 app.js
 
 ```
-import {AMPonent} from "https://res.cloudinary.com/dithdroai/raw/upload/v1609694658/libraries/ponentmod_sx3xup.js"
+import {AMPonent} from "https://res.cloudinary.com/dithdroai/raw/upload/v1629230872/libraries/ponentmod_l63xt4.js"
 
 ```
 
@@ -63,35 +63,33 @@ This is the name of the resulting html tag which MUST be kebab case. So if you p
 
 config is an object which can have the following properties
 
-**render**: this takes a function which should return a template a string, the signature of the function should be (box, props) => `template string`
+**render**: this takes a function which should return a template a string, the signature of the function should be (box, props, element) => `template string`
 
 **box**: this should be an object of variables to be used throughout your component, think of this as state in react or data in vue.
 
-**beforeFirst**: A function that runs before the first render, the signature is (box, props) => {}
+**beforeFirst**: A function that runs before the first render, the signature is (box, props, element) => {}
 
-**afterFirst**: A function that runs after the first render, the signature is (box, props) => {}
+**afterFirst**: A function that runs after the first render, the signature is (box, props, element) => {}
 
-**before**: A function that runs before every render, the signature is (box, props) => {}
+**before**: A function that runs before every render, the signature is (box, props, element) => {}
 
-**after**: A function that runs after every render, the signature is (box, props) => {}, this function is the perfect place to wire event listeners on your template.
+**after**: A function that runs after every render, the signature is (box, props, element) => {}, this function is the perfect place to wire event listeners on your template.
 
-**destroy**: A function that runs when component is removed from DOM, the signature is (box, props) => {}
+**destroy**: A function that runs when component is removed from DOM, the signature is (box, props, element) => {}
 
 **pretty**: function that should return a string of css styles to go in the components style tag, function signature is (box, props) => `h1 {color: red} div {display: flex}`
 
-**reducer**: A function that run when the dispatch method is invoked, the function signature is (box, props, payload) => {}, the return value will use to update the box.
+**reducer**: A function that run when the dispatch method is invoked, the function signature is (box, props, payload, element) => {}, the return value will use to update the box.
 
-**funcs**: An object of other methods you'd like available to use by your component, the signature of these functions should be (box, props) => {}, the functions can then be used by passing the function name to the useFunc method.
+**funcs**: An object of other methods you'd like available to use by your component, if you want to be able to use the this keyword in the function to access state and props then write it as anything but an arrow function (object method or function declaration).
 
 #### Other Properties
 
-**this.\$s(query)**: Equivalent to this.shadowRoot.querySelector
-**this.\$sa(query)**: Equivalent to this.shadowRoot.querySelectorAll
-**this.\$id(query)**: Equivalent to this.shadowRoot.getElementById
+- **this.\$s(query)**: Equivalent to this.shadowRoot.querySelector
+- **this.\$sa(query)**: Equivalent to this.shadowRoot.querySelectorAll
+- **this.\$id(query)**: Equivalent to this.shadowRoot.getElementById
 
 #### Methods
-
-**this.useFunc(methodName)** invokes a function from the funcs property, pass in a string with the functions name, it will be passed the box and props and invoked. This function will return the invoked functions return value.
 
 **this.stuffBox(newStuff)** pass an object of properties to this function and they'll be added/updated in the components box, the component will then be re-rendered triggering the before, render and after functions in that order.
 
@@ -137,28 +135,26 @@ AMPonent.make("hello-world", {
 ////////////////////////
 
 AMPonent.make("super-cheese", {
-  render: function (box, props) {
-    console.log(this);
-    return `<h1>${box.hello}</h1> ${this.useFunc(
-      "test"
-    )} <button id="button">Click Me</button>`;
+  render: function (box, props, el) {
+    console.log(el);
+    return `<h1>${box.hello}</h1> ${el.test} <button id="button">Click Me</button>`;
   },
   box: { hello: "Hello World" },
   funcs: {
-    test: (box, props) => "Say Hi",
+    test: () => "Say Hi",
   },
-  firstBefore: function (box, props) {
+  firstBefore: function (box, props, el) {
     console.log("before first render");
   },
-  firstAfter: function (box, props) {
+  firstAfter: function (box, props, el) {
     console.log("after first render");
   },
-  before: function (box, props) {
+  before: function (box, props, el) {
     console.log("before");
   },
-  after: function (box, props) {
-    this.$s("#button").addEventListener("click", (event) => {
-      this.stuffBox({ hello: "Goodbye World" });
+  after: function (box, props, el) {
+    el.$s("#button").addEventListener("click", (event) => {
+      el.stuffBox({ hello: "Goodbye World" });
     });
   },
 });

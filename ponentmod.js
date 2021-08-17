@@ -40,25 +40,23 @@ export default {
         this.render = config.render ? config.render : () => "";
         this.destroy = config.destroy ? config.destroy : () => {};
         this.reducer = config.reducer ? config.reducer : () => {};
-        this.funcs = config.funcs ? config.funcs : {};
-        this.$ =
+        if (this.funcs){
+          for (key of Object.keys(this.funcs))
+          this[key] = this.funcs[key]
+        }
           //first render
-          this.firstBefore(this.box, this.props);
-        this.build(this.box, this.props);
-        this.firstAfter(this.box, this.props);
+        this.firstBefore(this.box, this.props, this);
+        this.build(this.box, this.props, this);
+        this.firstAfter(this.box, this.props, this);
       }
 
       build(box, props) {
-        this.before(box, props);
+        this.before(box, props, this);
         this.shadowRoot.innerHTML = `<style>${this.pretty(
           box,
           props
-        )}</style> ${this.render(box, props)}`;
-        this.after(box, props);
-      }
-
-      useFunc(name) {
-        return this.funcs[name](this.box, this.props);
+        )}</style> ${this.render(box, props, this)}`;
+        this.after(box, props, this);
       }
 
       stuffBox(items) {
@@ -68,11 +66,11 @@ export default {
       }
 
       dispatch(payload) {
-        this.stuffBox(this.reducer(this.box, this.props, payload));
+        this.stuffBox(this.reducer(this.box, this.props, payload, this));
       }
 
       disconnectedCallback() {
-        this.destroy(this.box, this.props);
+        this.destroy(this.box, this.props, this);
       }
     }
 
@@ -100,4 +98,12 @@ export default {
 
     customElements.define(name, S);
   },
+  captureProps: (element) => {
+    const att = [...element.attributes];
+    const entries = att.map((value) => {
+      return [value.name, value.value];
+    });
+  
+    return Object.fromEntries(entries);
+  }
 };
