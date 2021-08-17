@@ -40,9 +40,10 @@ export default {
         this.render = config.render ? config.render : () => "";
         this.destroy = config.destroy ? config.destroy : () => {};
         this.reducer = config.reducer ? config.reducer : () => {};
-        if (config.funcs){
-          for (key of Object.keys(config.funcs))
-          this[key] = config.funcs[key]
+        if (config.funcs) {
+          for (let key of Object.keys(config.funcs)) {
+            this[key] = config.funcs[key];
+          }
         }
           //first render
         this.firstBefore(this.box, this.props, this);

@@ -41,7 +41,9 @@ const AMPonent = {
         this.destroy = config.destroy ? config.destroy : () => {};
         this.reducer = config.reducer ? config.reducer : () => {};
         if (config.funcs) {
-          for (key of Object.keys(config.funcs)) this[key] = config.funcs[key];
+          for (let key of Object.keys(config.funcs)) {
+            this[key] = config.funcs[key];
+          }
         }
         //first render
         this.firstBefore(this.box, this.props, this);

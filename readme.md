@@ -15,7 +15,7 @@ AMPonent is Alex Merced's newest Web Component Building Library for making reusa
 ### CDN
 
 ```
-<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1629233951/libraries/ponent_ijtgyo.js" charset="utf-8" defer></script>
+<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1629234194/libraries/ponent_crsdhu.js" charset="utf-8" defer></script>
 ```
 
 ### Webpack Build
@@ -45,7 +45,7 @@ index.html
 app.js
 
 ```
-import {AMPonent} from "https://res.cloudinary.com/dithdroai/raw/upload/v1629233951/libraries/ponentmod_nfthxc.js"
+import {AMPonent} from "https://res.cloudinary.com/dithdroai/raw/upload/v1629234185/libraries/ponentmod_keh35m.js"
 
 ```
 
