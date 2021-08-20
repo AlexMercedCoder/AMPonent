@@ -15,7 +15,7 @@ AMPonent is Alex Merced's newest Web Component Building Library for making reusa
 ### CDN
 
 ```
-<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1629234194/libraries/ponent_crsdhu.js" charset="utf-8" defer></script>
+<script src="https://res.cloudinary.com/dithdroai/raw/upload/v1629464347/libraries/ponent_b6y1uh.js" charset="utf-8" defer></script>
 ```
 
 ### Webpack Build
@@ -31,7 +31,7 @@ npm i amponent
 in your javascript file
 
 ```
-const {AMPonent} = require("amponent")
+const AMPonent = require("amponent")
 ```
 
 ### ES6 Module
@@ -45,7 +45,7 @@ index.html
 app.js
 
 ```
-import {AMPonent} from "https://res.cloudinary.com/dithdroai/raw/upload/v1629234185/libraries/ponentmod_keh35m.js"
+import AMPonent from "https://res.cloudinary.com/dithdroai/raw/upload/v1629464347/libraries/ponentmod_z0ukid.js"
 
 ```
 
@@ -190,4 +190,34 @@ AMPonent.makeStyle("red-h1", "h1", "color: var(--the-color);");
     <red-h1><h1>Hello World</h1></red-h1>
   </body>
 </html>
+```
+
+## Sharing Data with DataShare
+
+To more easily share data between components or accross your app you can create a dataShare object
+
+```js
+const ds = AMPonent.createDataShare({
+  initialState: {
+    count: 0,
+  },
+});
+```
+
+This object can have it's properties changed freely, allowing components to use it as a stored of shared data. You can also register functions to it that are passed the state so you can control when updates occur (instead of immediately after each property change.) So you can batch changes to the dataShare then trigger updates afterwards.
+
+Below is an example of binding a cfunction to dataShare updates.
+
+```js
+// register a function to update the components box when datashare runs update function
+ds.register((datashare) =>
+  document
+    .querySelect("component-component")
+    .stuffBox({ count: datashare.count })
+);
+
+function addOne() {
+  ds.count += 1; // update the datashare
+  ds.update(); // run all registered functions
+}
 ```

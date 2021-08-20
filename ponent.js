@@ -13,11 +13,32 @@ const captureProps = (element) => {
   return Object.fromEntries(entries);
 };
 
+////////////////////////
+// DataShare
+////////////////////////
+const createDataShare = (config) => {
+  const dataShare = config.initialState || {};
+
+  dataShare._funcs = [];
+
+  dataShare.register = function (func) {
+    dataShare._funcs.push(func);
+  };
+
+  dataShare.update = function () {
+    this._funcs.forEach((func) => func(this));
+  };
+
+  return dataShare;
+};
+
 ////////////////////
 // AMPonent
 ///////////////////
 
 const AMPonent = {
+  createDataShare,
+  captureProps,
   make: function (name, config) {
     class C extends HTMLElement {
       constructor() {
@@ -42,7 +63,9 @@ const AMPonent = {
         this.reducer = config.reducer ? config.reducer : () => {};
         if (config.funcs) {
           for (let key of Object.keys(config.funcs)) {
-            this[key] = config.funcs[key];
+            if (!this[key]) {
+              this[key] = config.funcs[key];
+            }
           }
         }
         //first render
@@ -77,7 +100,6 @@ const AMPonent = {
 
     customElements.define(name, C);
   },
-  captureProps,
   makeStyle: function (name, target, style) {
     class S extends HTMLElement {
       constructor() {
@@ -98,14 +120,5 @@ const AMPonent = {
     }
 
     customElements.define(name, S);
-  },
-
-  captureProps: (element) => {
-    const att = [...element.attributes];
-    const entries = att.map((value) => {
-      return [value.name, value.value];
-    });
-
-    return Object.fromEntries(entries);
-  },
+  }
 };
