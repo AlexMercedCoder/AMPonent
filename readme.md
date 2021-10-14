@@ -57,11 +57,11 @@ AMPonent.make is the main function for creating web components, the function sig
 
 _AMPonent.make(name, config)_
 
-#### name
+### name
 
-This is the name of the resulting html tag which MUST be kebab case. So if you pass in "my-component" the resulting html tag to use the component will be <my-component>.
+This is the name of the resulting html tag which MUST be kebab case. So if you pass in "my-component" the resulting html tag to use the component will be `<my-component>`.
 
-#### config
+### config
 
 config is an object which can have the following properties
 
